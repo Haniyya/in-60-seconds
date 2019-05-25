@@ -20,7 +20,7 @@
 - Performance
 - Memory-Safety without a GC
 - Zero-Cost-Abstrations
-- ![](assets/img/rustacean.png)
+- ![the crab](assets/img/rustacean.png)
 
 ---
 
@@ -35,7 +35,7 @@
 
 ---
 
-#### Differences to [red](**ruby**)
+#### Differences to **ruby**
 
 1. The stack is back
 1. Immutable by default
