@@ -20,11 +20,11 @@
 - Performance
 - Memory-Safety without a GC
 - Zero-Cost-Abstrations
-- ![the crab](assets/img/rustacean.png)
+- ![](assets/img/rustacean.png)
 
 ---
 
-## Designed to replace C/C++
+### Designed to replace C/C++
 
 ---
 
@@ -35,7 +35,7 @@
 
 ---
 
-#### Differences to **ruby**
+### Differences to **ruby**
 
 1. The stack is back
 1. Immutable by default
@@ -76,6 +76,7 @@
 
 - Global mutable state is possible, but really hard to do. So don't.
 - Stuff like a graph is non trivial:
+
 ```rust
 struct Node<T> {
   value: T,
@@ -104,6 +105,7 @@ x = 9; // Ok!
 #### How does that help?
 1. No accidental mutations
 1. Signatures are very descriptive (combined with ownership)
+
 ```rust
 // Consumes value, returns nothing (cannot be assigned)
 fn eat_it(c: Cake) {}
@@ -122,6 +124,7 @@ fn decorate(c: &mut Cake) -> &mut Cake {}
 1. High level concepts in low level language
 1. Most gets compiled away
 1. Example: Iterators
+
 ```rust
 let numbers = vec![1, 2, 3, 4];
 numbers.iter().map(|i| i + 2).map(|i| i * 2) // Lazy and chainable
@@ -129,6 +132,7 @@ numbers.iter().map(|i| i + 2).map(|i| i * 2) // Lazy and chainable
 #### Fearless concurrency
 1. Very easy to parallelize operations
 1. Compiler guarantees no-data-races
+
 ```rust
 let numbers = vec![1, 2, 3, 4];
 // par_iter parallelizes execution of the iterator based on a thread-pool
