@@ -195,7 +195,7 @@ fn main() {
 ### Fearless concurrency
 @[5-5](Wrap a mutex in an Atomic reference counter)
 @[9-9](Get a new reference to the mutex. Increase the counter)
-@[15-16](Arc gets dropped, decreases reference count by 1)
+@[14-15](Arc gets dropped, decreases reference count by 1)
 @[18-20](All Arcs dropped, deallocate counter)
 @[22-22](Print "Result: 10")
 ---
