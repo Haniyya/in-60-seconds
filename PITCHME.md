@@ -4,6 +4,9 @@
 
 ## Rust in Baden
 
+- Population of ~4100
+- Elevation of 169 m
+
 ![](assets/img/rust_church.jpg)
 
 ---
@@ -82,7 +85,7 @@
 
 #### How does that hinder you?
 
-- Global mutable state is possible, but really hard to do. So don't.
+- Global mutable state is possible, but really discouraged. So don't.
 - Stuff like a graph is non trivial:
 
 ```rust
@@ -110,6 +113,7 @@ let mut x = 7;
 x = 9; // Ok!
 ```
 ---?gist=https://gist.github.com/Haniyya/b2ff3f82b1519f67d2c7a72b102801b7
+### Expressive Signatures
 @[1-2](Consume the value.)
 @[4-5](Consume the value and return a **new** value.)
 @[7-8](Read the value. Return the ownership afterwards.)
@@ -127,22 +131,25 @@ numbers.iter().map(|i| i + 2).map(|i| i * 2) // Lazy and chainable
 ### Monads! (I think)
 
 ```rust
-fn sqrt(a: i32) -> Option<i32> {
-  match a {
-    _ if a < 0 => None,
-    _ => Some(a.sqrt())
-  }
+
+fn sqrt(a: f32) -> Option<f32> {
+    match a {
+        _ if a < 0.0 => None,
+        _ => Some(a.sqrt()),
+    }
 }
 
-sqrt(9).map(|n| n + 2);  // Returns Some(5)
-sqrt(-9).map(|n| n + 2); // Returns None
+fn main() {
+    println!("{:?}", sqrt(9.0).map(|n| n + 2.0));  // Print Some(5)
+    println!("{:?}", sqrt(-9.0).map(|n| n + 2.0)); // Print None
+}
 ```
 ---?gist=https://gist.github.com/Haniyya/c59eae6b369ac152914999704f84ac6b
 ### Fearless concurrency
 @[5-5](Wrap a mutex in an Atomic reference counter)
 @[9-9](Get a new reference to the mutex. Increase the counter)
-@[16-16](Arc gets dropped, decreases reference count by 1)
-@[19-19](All Arcs dropped, deallocate counter)
+@[15-16](Arc gets dropped, decreases reference count by 1)
+@[18-20](All Arcs dropped, deallocate counter)
 @[22-22](Print "Result: 10")
 ---
 ### Rubyists in rust
