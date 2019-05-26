@@ -38,6 +38,7 @@
 - (unless you are well versed in C++ **and** Haskell)
 
 ---?gist=https://gist.github.com/Haniyya/36e90e3d630de57151b0b25ad17f9d79
+#### Basic hello world
 @[1-1](Entry function signature. Returns nothing.)
 @[2-2](Macro to print "Hello, world!")
 @[3-3](End of function)
