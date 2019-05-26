@@ -63,7 +63,7 @@
 
 ```rust
   let x = "cake";
-  eat(x);
+  eat(x); // eat takes ownership of (x). It "consumes" x.
   have_it_too(x); // Won't compile
 ```
 1. You can **borrow** though
@@ -78,11 +78,19 @@
 
 @ul
 - No garbage collector needed!
-- No more memory allocation!
+- No more (manual) memory deallocation!
 - Fearless concurrency!
     - No more data races
 @ulend
 
+```rust
+fn my_free(_value: usize) { }
+
+fn main() {
+ let x = 7;
+ my_free(x) // x is dropped (freed) here
+}
+```
 ---
 
 #### How does that hinder you?
@@ -152,7 +160,6 @@ fn main() {
 use std::num::ParseIntError;
 
 // As with `Option`, we can use combinators such as `map()`.
-// This function is otherwise identical to the one above and reads:
 // Modify n if the value is valid, otherwise pass on the error.
 fn multiply(first_number_str: &str, second_number_str: &str) -> Result<i32, ParseIntError> {
     first_number_str.parse::<i32>().and_then(|first_number| {
