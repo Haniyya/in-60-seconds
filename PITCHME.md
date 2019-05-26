@@ -23,6 +23,7 @@
 - Performance
 - Memory-Safety without a GC
 - Zero-Cost-Abstrations
+- Great little crab mascot
 ![](assets/img/rustacean.png)
 
 ---
@@ -144,6 +145,39 @@ fn main() {
     println!("{:?}", sqrt(-9.0).map(|n| n + 2.0)); // Print None
 }
 ```
+---
+### Error handling
+```rust
+use std::num::ParseIntError;
+
+// As with `Option`, we can use combinators such as `map()`.
+// This function is otherwise identical to the one above and reads:
+// Modify n if the value is valid, otherwise pass on the error.
+fn multiply(first_number_str: &str, second_number_str: &str) -> Result<i32, ParseIntError> {
+    first_number_str.parse::<i32>().and_then(|first_number| {
+        second_number_str.parse::<i32>().map(|second_number| first_number * second_number)
+    })
+}
+
+fn print(result: Result<i32, ParseIntError>) {
+    match result {
+        Ok(n)  => println!("n is {}", n),
+        Err(e) => println!("Error: {}", e),
+    }
+}
+
+fn main() {
+    let twenty = multiply("10", "2");
+    print(twenty);
+
+    let tt = multiply("t", "2");
+    print(tt);
+}
+
+// Output:
+// n is 20
+// Error: invalid digit found in string
+```
 ---?gist=https://gist.github.com/Haniyya/c59eae6b369ac152914999704f84ac6b
 ### Fearless concurrency
 @[5-5](Wrap a mutex in an Atomic reference counter)
@@ -171,3 +205,5 @@ fn main() {
 1. Facebook (soon)
 1. You (soon)
 ---
+### Wanna try it?
+![Rust lang website](assets/img/frame.png)
