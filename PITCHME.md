@@ -20,11 +20,13 @@
 
 ### Selling points of rust
 
+@ul
 - Performance
 - Memory-Safety without a GC
 - Zero-Cost-Abstrations
 - Great little crab mascot
 ![](assets/img/rustacean.png)
+@ulend
 
 ---
 
