@@ -47,6 +47,7 @@
 ### Differences to **ruby**
 
 @ul
+- Statically typed (but with a lot of type inference)
 - The stack is back
 - Immutable by default
 - No "real" meta-programming
