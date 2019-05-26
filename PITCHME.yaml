@@ -6,7 +6,7 @@
 # Theme Setting
 # Doc: https://gitpitch.com/docs/settings/theme
 #
-theme: night
+theme: beige
 
 #
 # Theme-Override Setting
@@ -39,7 +39,7 @@ footnote : "GitPitch - The Fastest Way From Idea To Presentation"
 #
 published : true
 
-highlight: simple
+# highlight: simple
 
 #
 # Twitter Card Settings [Pro Only]

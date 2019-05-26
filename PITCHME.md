@@ -20,7 +20,7 @@
 - Performance
 - Memory-Safety without a GC
 - Zero-Cost-Abstrations
-- ![](assets/img/rustacean.png)
+![](assets/img/rustacean.png)
 
 ---
 
@@ -37,11 +37,13 @@
 
 ### Differences to **ruby**
 
-1. The stack is back
-1. Immutable by default
-1. No "real" meta-programming
-1. Data/Behaviour separated
-1. **Ownership**
+@ul
+- The stack is back
+- Immutable by default
+- No "real" meta-programming
+- Data/Behaviour separated
+- **Ownership**
+@ulend
 
 ---
 
@@ -53,22 +55,24 @@
 ```rust
   let x = "cake";
   eat(x);
-  have_it_to(x); // Won't compile
+  have_it_too(x); // Won't compile
 ```
 1. You can **borrow** though
 ```rust
   let x = "cake";
   eat(&x); // Only borrowed. So we give the cake back after eating it. Urgh...
-  have_it_to(x); // Will compile!
+  have_it_too(x); // Will compile!
 ```
 ---
 
 #### How does that help?
 
+@ul
 - No garbage collector needed!
 - No more memory allocation!
 - Fearless concurrency!
     - No more data races
+@ulend
 
 ---
 
@@ -86,7 +90,7 @@ struct Node<T> {
 let first_node = Node { value: 7, neighbors: vec![] };
 // first_node is **moved** here
 let second_node = Node { value: 5, neighbors: vec![first_node] };
-// Use after move
+// Use after move. Won't compile.
 let third_node = Node { value: 20, neighbors: vec![first_node] };
 ```
 ---
@@ -117,8 +121,12 @@ fn recycle(c: Cake) -> Cake {}
 fn look_at(c: &Cake) {}
 
 // Changes the cake we pass into it. 
-fn decorate(c: &mut Cake) -> &mut Cake {}
+fn decorate(c: &mut Cake) {}
 ```
+@[114-115](Consume the value.)
+@[117-118](Consume the value and return a **new** value.)
+@[120-121](Read the value. Return the ownership afterwards.)
+@[123-124](Change the value and return it.)
 ---
 #### Zero cost abstractions
 1. High level concepts in low level language
