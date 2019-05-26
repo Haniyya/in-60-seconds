@@ -33,6 +33,10 @@
 - Easy to pick up
 - (unless you are well versed in C++ **and** Haskell)
 
+---?gist=https://gist.github.com/Haniyya/36e90e3d630de57151b0b25ad17f9d79
+@[1-1](Entry function signature. Returns nothing.)
+@[2-2](Macro to print "Hello, world!")
+@[3-3](End of function)
 ---
 
 ### Differences to **ruby**
@@ -105,41 +109,25 @@ x = 9; // NoNoNo!
 let mut x = 7;
 x = 9; // Ok!
 ```
+---?gist=https://gist.github.com/Haniyya/b2ff3f82b1519f67d2c7a72b102801b7
+@[1-2](Consume the value.)
+@[4-5](Consume the value and return a **new** value.)
+@[7-8](Read the value. Return the ownership afterwards.)
+@[10-11](Change the value and return it.)
 ---
-#### How does that help?
-1. No accidental mutations
-1. Signatures are very descriptive (combined with ownership)
-
-```rust
-// Consumes value, returns nothing (cannot be assigned)
-fn eat_it(c: Cake) {}
-
-// Consumes value, returns another **different** value
-fn recycle(c: Cake) -> Cake {}
-
-// Reads value. Nothing more.
-fn look_at(c: &Cake) {}
-
-// Changes the cake we pass into it. 
-fn decorate(c: &mut Cake) {}
-```
-@[114-115](Consume the value.)
-@[117-118](Consume the value and return a **new** value.)
-@[120-121](Read the value. Return the ownership afterwards.)
-@[123-124](Change the value and return it.)
----
-#### Zero cost abstractions
-1. High level concepts in low level language
-1. Most gets compiled away
-1. Example: Iterators
+@ul
+- Zero cost abstractions
+  - High level concepts in low level language
+  - Most gets compiled away
 
 ```rust
 let numbers = vec![1, 2, 3, 4];
 numbers.iter().map(|i| i + 2).map(|i| i * 2) // Lazy and chainable
 ```
-#### Fearless concurrency
-1. Very easy to parallelize operations
-1. Compiler guarantees no-data-races
+- Fearless concurrency
+  - Very easy to parallelize operations
+  - Compiler guarantees no-data-races
+@ulend
 
 ```rust
 let numbers = vec![1, 2, 3, 4];
