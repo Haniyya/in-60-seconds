@@ -36,8 +36,10 @@
 
 ### What it's not
 
+@ul
 - Easy to pick up
 - (unless you are well versed in C++ **and** Haskell)
+@ulend
 
 ---?gist=https://gist.github.com/Haniyya/36e90e3d630de57151b0b25ad17f9d79
 #### Basic hello world
