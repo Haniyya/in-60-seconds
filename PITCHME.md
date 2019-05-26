@@ -115,8 +115,7 @@ x = 9; // Ok!
 @[7-8](Read the value. Return the ownership afterwards.)
 @[10-11](Change the value and return it.)
 ---
-@ul
-- Zero cost abstractions
+### Zero cost abstractions
   - High level concepts in low level language
   - Most gets compiled away
 
@@ -124,17 +123,27 @@ x = 9; // Ok!
 let numbers = vec![1, 2, 3, 4];
 numbers.iter().map(|i| i + 2).map(|i| i * 2) // Lazy and chainable
 ```
-- Fearless concurrency
-  - Very easy to parallelize operations
-  - Compiler guarantees no-data-races
-@ulend
+---
+### Monads! (I think)
 
 ```rust
-let numbers = vec![1, 2, 3, 4];
-// par_iter parallelizes execution of the iterator based on a thread-pool
-numbers.par_iter().map(|i| i + 2).map(|i| i * 2) // Lazy and chainable
+fn sqrt(a: i32) -> Option<i32> {
+  match a {
+    _ if a < 0 => None,
+    _ => Some(a.sqrt())
+  }
+}
+
+sqrt(9).map(|n| n + 2);  // Returns Some(5)
+sqrt(-9).map(|n| n + 2); // Returns None
 ```
-1. Firefox was thus able to parallelize CSS-rendering
+---?gist=https://gist.github.com/Haniyya/c59eae6b369ac152914999704f84ac6b
+### Fearless concurrency
+@[5-5](Wrap a mutex in an Atomic reference counter)
+@[9-9](Get a new reference to the mutex. Increase the counter)
+@[16-16](Arc gets dropped, decreases reference count by 1)
+@[19-19](All Arcs dropped, deallocate counter)
+@[22-22](Print "Result: 10")
 ---
 ### Rubyists in rust
 1. Yehuda Katz went from bundler to cargo
@@ -145,6 +154,7 @@ numbers.par_iter().map(|i| i + 2).map(|i| i * 2) // Lazy and chainable
 1. Serde
 1. Bindgen
 1. Helix
+1. Yew
 ---
 ### Who uses it?
 1. Firefox
